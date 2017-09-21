@@ -16,15 +16,12 @@ var lettersAlreadyGuessed = [];
     var hangmanWord = hangmanChoices[Math.floor(Math.random() * hangmanChoices.length)];
     console.log(hangmanWord)
 
-    var holders = [];
+    var hangmanPlacementholders = [];
+    
     for(var i = 0; i< hangmanWord.length; i++){
-        holders.push("_");
-       
-    }
+        hangmanPlacementholders.push("_");       
     
-
-    
-
+  }
 
 
 
@@ -34,25 +31,33 @@ var lettersAlreadyGuessed = [];
     document.onkeyup=function(event) {
         var keyPressed = event.key;
         var charIndex = hangmanWord.indexOf(keyPressed);
-        //console.log(charIndex);
         if(charIndex === -1){
             alert("Try Again");
             lettersAlreadyGuessed.push(keyPressed);
             console.log(lettersAlreadyGuessed);
+            numGuessRemain=numGuessRemain-1;
         }
         else{
           lettersAlreadyGuessed.push(keyPressed);
-          console.log(charIndex);
-          holders[charIndex] =keyPressed;
-          
-          
+          numGuessRemain = numGuessRemain-1;
+          for(var i=0;i<hangmanPlacementholders.length;i++){
+            if(hangmanWord[i] === keyPressed){
+              hangmanPlacementholders[i] = keyPressed;
+              //console.log(keyPressed);
+            }
+             
+          }
         }
-        console.log(holders);
-
-
-        
-         
+        console.log(hangmanPlacementholders);
       };
+
+     
+
+
+
+        //main logic, startup code
+
+  
 
 
 
@@ -61,4 +66,3 @@ var lettersAlreadyGuessed = [];
 
     
 
-    //main logic, startup code
