@@ -5,6 +5,12 @@
 var wins = 0;
 var numGuessRemain =10;
 var lettersAlreadyGuessed = [];
+var numberGuessesHTML = document.getElementById("numGuessElm");
+var lettersAlreadyGuessedHTML = document.getElementById("numGuessElm");
+var wordisplayHTML = document.getElementById("wordisplay")
+
+ numberGuessesHTML.textContent= "Number of Guesses Remaining: " + numGuessRemain;
+
 
 
 
@@ -19,9 +25,11 @@ var lettersAlreadyGuessed = [];
     var hangmanPlacementholders = [];
     
     for(var i = 0; i< hangmanWord.length; i++){
-        hangmanPlacementholders.push("_");       
+        hangmanPlacementholders.push("_"); 
+        wordisplayHTML.textContent = hangmanPlacementholders.join(" ");      
     
   }
+  console.log(hangmanPlacementholders);
 
 
 
@@ -34,42 +42,50 @@ var lettersAlreadyGuessed = [];
         //gets the index of the hangmanword
         var charIndex = hangmanWord.indexOf(keyPressed);
 
-      if(hangmanPlacementholders.indexOf("_") === -1){
-        alert("You Won!")
+      if(numGuessRemain === 0){
+        alert("You lose");
       }
 
-      //if there are still guesses left then proceed with the game
-      else if(numGuessRemain != 0){
-        //if the letter does not exists in the word
+
         if(charIndex === -1){
             
             lettersAlreadyGuessed.push(keyPressed); 
-            //console.log(lettersAlreadyGuessed);
+            
             numGuessRemain=numGuessRemain-1; //decrement number of guesses
-            alert("Try Again! You have " +numGuessRemain+ " guesses left"); //pop alert try again 
+            //alert("Try Again! You have " +numGuessRemain+ " guesses left"); //pop alert try again 
+            numberGuessesHTML.textContent = "Number of Guesses Remaining: " + numGuessRemain;
 
         }
+
+
         else{
           lettersAlreadyGuessed.push(keyPressed);
           numGuessRemain = numGuessRemain-1;
           for(var i=0;i<hangmanPlacementholders.length;i++){
+
             if(hangmanWord[i] === keyPressed){
               hangmanPlacementholders[i] = keyPressed;
+              wordisplayHTML.textContent = hangmanPlacementholders.join(" "); 
             }
-             //document.getElementById('wordisplay').textContent(hangmanPlacementholders[i]);
+            
+
+            
           }
+          numberGuessesHTML.textContent = "Number of Guesses Remaining: " + numGuessRemain;
+
         }
 
-      }
 
-      
+       
 
-      else{
-        alert("You lose");
-      }
-        console.log(hangmanPlacementholders);
-        //window.document.getElementById('paragraph2').textContent='Some sort of text goes here.';            
-        //document.getElementById('wordisplay').textContent(hangmanPlacementholders);
+      if(hangmanPlacementholders.indexOf("_") === -1){
+          wins += 1;
+          document.getElementById('winElm').textContent='Wins:'+wins;      
+          //alert("You Won! " + hangmanWord);
+          }
+    
+       console.log(hangmanPlacementholders);
+        
       };
 
      
