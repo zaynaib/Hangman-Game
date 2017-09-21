@@ -26,7 +26,7 @@ var wordisplayHTML = document.getElementById("wordisplay")
     
     for(var i = 0; i< hangmanWord.length; i++){
         hangmanPlacementholders.push("_"); 
-        wordisplayHTML.textContent = hangmanPlacementholders.join(" ");      
+        wordisplayHTML.textContent = "Current Word: " + hangmanPlacementholders.join(" ");      
     
   }
   console.log(hangmanPlacementholders);
@@ -65,7 +65,7 @@ var wordisplayHTML = document.getElementById("wordisplay")
 
             if(hangmanWord[i] === keyPressed){
               hangmanPlacementholders[i] = keyPressed;
-              wordisplayHTML.textContent = hangmanPlacementholders.join(" "); 
+              wordisplayHTML.textContent = "Current Word: " + hangmanPlacementholders.join(" "); 
             }
             
 
