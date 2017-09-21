@@ -1,5 +1,32 @@
-.letterPlaceHolder{
-	width: 18px;
-	height: 18px;
-	border-bottom: 2px solid #000;
+
+
+@font-face {
+    font-family: 'super_plumber_brothersregular';
+    src: url('brothers.woff2') format('woff2'),
+         url('brothers.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.h1 {
+font-family: 'super_plumber_brothersregular';
+margin-top: 80px;
+color:#2A3640;
+}
+
+
+body{
+	background-image: url("../images/mario.jpg")
+}
+
+.h2{
+	color:white;
+	font-weight:bold;
+}
+
+.container{
+	margin-top:80px;
+	margin-left:auto;
+	margin-right:auto;
 }

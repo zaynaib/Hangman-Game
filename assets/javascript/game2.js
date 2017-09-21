@@ -3,23 +3,32 @@
 
 //variable
 var wins = 0;
+
 var numGuessRemain =10;
 var lettersAlreadyGuessed = [];
 var numberGuessesHTML = document.getElementById("numGuessElm");
-var lettersAlreadyGuessedHTML = document.getElementById("numGuessElm");
-var wordisplayHTML = document.getElementById("wordisplay")
+var lettersAlreadyGuessedHTML = document.getElementById("guessLetterElm");
+var wordisplayHTML = document.getElementById("wordisplay");
 
- numberGuessesHTML.textContent= "Number of Guesses Remaining: " + numGuessRemain;
+
+ 
+ //numberGuessesHTML.textContent= "Number of Guesses Remaining: " + numGuessRemain;
 
 
 
 
  // Creates an array that lists out all of the options.
  //this does not work with the same letter in different indices
-    var hangmanChoices = ["kanye", "cardib","tink","twista","madonna"];
+    var hangmanChoices = ["mario", "luigi","browser","peach","toad","yoshi","daisy","waluigi", "bowser jr","koopalings"];
 
     //create a random generator for the hangman word
-    var hangmanWord = hangmanChoices[Math.floor(Math.random() * hangmanChoices.length)];
+    //var hangmanWord = hangmanChoices[Math.floor(Math.random() * hangmanChoices.length)];
+    function hangmanGenerator(arr){
+        return hangmanChoices[Math.floor(Math.random() * hangmanChoices.length)];
+
+    };
+
+    var hangmanWord = hangmanGenerator(hangmanChoices);
     console.log(hangmanWord)
 
     var hangmanPlacementholders = [];
@@ -44,6 +53,7 @@ var wordisplayHTML = document.getElementById("wordisplay")
 
       if(numGuessRemain === 0){
         alert("You lose");
+        
       }
 
 
@@ -52,9 +62,9 @@ var wordisplayHTML = document.getElementById("wordisplay")
             lettersAlreadyGuessed.push(keyPressed); 
             
             numGuessRemain=numGuessRemain-1; //decrement number of guesses
-            //alert("Try Again! You have " +numGuessRemain+ " guesses left"); //pop alert try again 
+            alert("Try Again! You are wack."); //pop alert try again 
             numberGuessesHTML.textContent = "Number of Guesses Remaining: " + numGuessRemain;
-
+            lettersAlreadyGuessedHTML.textContent = "Letters Already Guessed: " + lettersAlreadyGuessed.join(" ");
         }
 
 
@@ -66,13 +76,14 @@ var wordisplayHTML = document.getElementById("wordisplay")
             if(hangmanWord[i] === keyPressed){
               hangmanPlacementholders[i] = keyPressed;
               wordisplayHTML.textContent = "Current Word: " + hangmanPlacementholders.join(" "); 
+              lettersAlreadyGuessedHTML.textContent = "Letters Already Guessed: " + lettersAlreadyGuessed.join(" ");
+
             }
             
 
             
           }
           numberGuessesHTML.textContent = "Number of Guesses Remaining: " + numGuessRemain;
-
         }
 
 
@@ -81,7 +92,8 @@ var wordisplayHTML = document.getElementById("wordisplay")
       if(hangmanPlacementholders.indexOf("_") === -1){
           wins += 1;
           document.getElementById('winElm').textContent='Wins:'+wins;      
-          //alert("You Won! " + hangmanWord);
+          alert("You Won! " + hangmanWord);
+                   
           }
     
        console.log(hangmanPlacementholders);
