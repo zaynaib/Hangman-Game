@@ -47,7 +47,7 @@ var wordisplayHTML = document.getElementById("wordisplay");
 
     document.onkeyup=function(event) {
         //gets the key from the user
-        var keyPressed = event.key;
+        var keyPressed = event.key.toLowerCase();
         //gets the index of the hangmanword
         var charIndex = hangmanWord.indexOf(keyPressed);
 
