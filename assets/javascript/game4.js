@@ -63,6 +63,8 @@ var wordisplayHTML = document.getElementById("wordisplay");
 
       if(numGuessRemain === 0){
         alert("You lose");
+        startOver();
+
         /*alert("Press Enter to start over");
           if(keyPressed === "Enter"){
              startOver();
