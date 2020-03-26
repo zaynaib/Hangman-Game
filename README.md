@@ -45,17 +45,20 @@ Click on the [Mario Hangman Link](https://zaynaib.github.io/Hangman-Game/) in or
 7. Definitely talk with a TA or your instructor if you get tripped up during this challenge.
 
 ## User Story
-
 ---
-[] Mario Theme
-[] Give user clues to figure out the hangman puzzle
-[] Give visual feedback on the letters that are already choosen
-[] Use MVC paradigm for game
-[] Add javascript test to game
-[] Win the characters add animation for Mario + to go into a castle
-[] Win the player losers - Browser Laugh
-[] Have Mario Game Theme music in background. - option to turn off
-To do:
+
+- [ ] Mario Theme
+- [ ] Give user clues to figure out the hangman puzzle
+- [ ] Give visual feedback on the letters that are already choosen
+- [ ] Use MVC paradigm for game
+- [ ] Add javascript test to game
+- [ ] Win the characters add animation for Mario + to go into a castle
+- [ ] Win the player losers - Browser Laugh
+- [ ] Have Mario Game Theme music in background. - option to turn off
+
+
+## My To Do List:
+---
 
 -   Create User story for Hangman game
 -   Record what I'm doing beginning to end(re watch net ninja)
