@@ -42,7 +42,6 @@ Click on the [Mario Hangman Link](https://zaynaib.github.io/Hangman-Game/) in or
 5. Save any of your game's functions as methods, and call them underneath your object declaration using event listeners.
 6. Don't forget to place your global variables and functions above your object.
     - Remember: global variables, then objects, then calls.
-7. Definitely talk with a TA or your instructor if you get tripped up during this challenge.
 
 ## User Story
 ---
