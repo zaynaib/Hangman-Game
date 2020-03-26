@@ -1,23 +1,22 @@
 {
-  "name": "hangman-game",
-  "version": "1.0.0",
-  "description": "Mario Themed Hangman game. Build with HTML, CSS, and Javascript.",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "jest": "^25.2.0"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zaynaib/Hangman-Game.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zaynaib/Hangman-Game/issues"
-  },
-  "homepage": "https://github.com/zaynaib/Hangman-Game#readme"
+	"name": "hangman-game",
+	"version": "1.0.0",
+	"description": "Mario Themed Hangman game. Build with HTML, CSS, and Javascript.",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zaynaib/Hangman-Game.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/zaynaib/Hangman-Game/issues"
+	},
+	"homepage": "https://github.com/zaynaib/Hangman-Game#readme",
+	"devDependencies": {
+		"jest": "^25.2.0"
+	}
 }
