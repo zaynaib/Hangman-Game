@@ -2,7 +2,7 @@
 
 Mario Themed Hangman game. Build with HTML, CSS, and Javascript.
 
-![](https://media.tenor.com/images/97872918807392449bb7acde89feb39e/tenor.gif)
+![Mario and Lugi Dancing Gif](https://media.tenor.com/images/97872918807392449bb7acde89feb39e/tenor.gif)
 
 Hangman is a game where a word to guess is represented by a row of dashes. Each dash represents each letter of the word. If a user
 makes an incorrect guess their number of guess goes down one point. The wrong letter will be shown on the bottom of the screen. If the user guess all of the letters to the word right. The game will give the user an option to play again.
@@ -13,7 +13,7 @@ Click on the [Mario Hangman Link](https://zaynaib.github.io/Hangman-Game/) in or
 
 ---
 
-1. Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions, 80s sound and an 80s aesthetic. You can choose any subject for your theme, though, so be creative!
+1. Choose a theme for your game
 
 2. Use key events to listen for the letters that your players will type.
 
@@ -44,19 +44,20 @@ Click on the [Mario Hangman Link](https://zaynaib.github.io/Hangman-Game/) in or
     - Remember: global variables, then objects, then calls.
 
 ## User Story
+
 ---
 
-- [ ] Mario Theme
-- [ ] Give user clues to figure out the hangman puzzle
-- [ ] Give visual feedback on the letters that are already choosen
-- [ ] Use MVC paradigm for game
-- [ ] Add javascript test to game
-- [ ] Win the characters add animation for Mario + to go into a castle
-- [ ] Win the player losers - Browser Laugh
-- [ ] Have Mario Game Theme music in background. - option to turn off
-
+-   [ ] Mario Theme
+-   [ ] Give user clues to figure out the hangman puzzle
+-   [ ] Give visual feedback on the letters that are already choosen
+-   [ ] Use MVC paradigm for game
+-   [ ] Add javascript test to game
+-   [ ] Win the characters add animation for Mario + to go into a castle
+-   [ ] Win the player losers - Browser Laugh
+-   [ ] Have Mario Game Theme music in background. - option to turn off
 
 ## My To Do List:
+
 ---
 
 -   Create User story for Hangman game
