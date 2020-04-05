@@ -22,6 +22,9 @@ class Model {
 			'bowser',
 			'koopalings',
 		];
+
+		this.numGuessesRemain = 10;
+		this.numWins = 0;
 	}
 
 	get firstChoice() {
