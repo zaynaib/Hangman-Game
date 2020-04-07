@@ -10,10 +10,16 @@ calculate the number of wins
 
 */
 
+const Model = require('./model');
+const View = require('./view')
 class Controller {
     constructor(model, view) {
         this.model = model
         this.view = view
+    }
+
+    selectHangmanWord(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
     }
 
     placeGenerator(word) {
@@ -25,10 +31,40 @@ class Controller {
         }
         return placeholders;
     }
+
+    //game play steps
+
+    /*
+
+    - play can guess a letter right
+    - can guess a letter wrong
+    - can play the same letter
+
+
+    */
+
+    /*
+
+    did the player win
+
+    */
+
+    /*
+     
+    did the player loose
+
+    */
+
+    /*
+     game reset
+
+    */
+
+
 }
 
 
-const testView = new View()
+const testView = new Controller()
 console.log(testView.placeGenerator('ho!'));
 
 module.exports = Controller;
