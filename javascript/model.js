@@ -6,12 +6,17 @@
  - how many losses the player have
  - the number of guesses
 
+ https://coryrylan.com/blog/javascript-es6-class-syntax ***
+
+ We use _ convention to create a backing field to store our name property. Without this every 
+ time get or set is called it would cause a stack overflow. 
+
 */
 
 class Model {
 	constructor() {
 		//List of hangman guesses for the game
-		this.hangmanChoices = [
+		this._hangmanChoices = [
 			'mario',
 			'lugi',
 			'browser',
@@ -24,38 +29,46 @@ class Model {
 			'koopalings',
 		];
 
-		this.numGuessesRemain = 10;
-		this.numWins = 0;
-		this.numLoss = 0;
+		this._numGuessesRemain = 10;
+		this._numWins = 0;
+		this._numLoss = 0;
 	}
 
 	get hangmanChoices() {
-		return this.hangmanChoices;
+		return this._hangmanChoices;
 	}
 
 	get numGuessesRemain() {
-		return this.numGuessesRemain;
+		return this._numGuessesRemain;
 	}
 
 	get numWins() {
-		return this.numWins;
+		return this._numWins;
 	}
 
 	get numLoss() {
-		return this.numLoss;
+		return this._numLoss;
+	}
+
+	set hangmanChoices(word) {
+		this.hangmanChoices = this._hangmanChoices.push(word)
 	}
 
 	set numGuessesRemain(numberOfGuesses) {
-		this.numGuessesRemain = numberOfGuesses;
+		this._numGuessesRemain = numberOfGuesses;
 	}
 
 	set numWins(numberOfWins) {
-		this.numWins = numberOfWins;
+		this._numWins = numberOfWins;
 	}
 
 	set numLoss(numberOfLoss) {
-		this.numLoss = numberOfLoss;
+		this._numLoss = numberOfLoss;
 	}
 }
+
+const myModel = new Model()
+
+console.log(myModel.hangmanChoices)
 
 module.exports = Model;
