@@ -1,5 +1,6 @@
 //import Model from './model';
 const Model = require('./model');
+const Service = require('./gameModiferService');
 
 //create a setup to test model classs
 
@@ -8,5 +9,7 @@ it('works', () => {
 	expect(mario.hangmanChoices).toBeTruthy();
 });
 
-// let mario = new Model();
-// console.log(mario);
+it('findLetterIndex', () => {
+	let myGame = new Service();
+	expect(myGame.findLetterIndex('q', 'apple')).toBe(-1);
+})

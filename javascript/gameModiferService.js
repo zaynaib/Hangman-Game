@@ -11,7 +11,6 @@ class GameModiferService {
 
     }
 
-
     /*
         takes game model class and increments wins
         input: GameModel instance
@@ -23,16 +22,26 @@ class GameModiferService {
     }
 
     //check if the letter is correct
+
     /*
+        takes game model class and increments wins
+        input: user input from event keypress
+        output: the index location of letter inside word
 
     */
 
     findLetterIndex(letter, hangmanWord) {
-        //https://www.w3schools.com/jsref/jsref_includes.asp
-        let isGuessRight = hangmanWord.indexOf(letter);
-
-        return isGuessRight;
+        let letterIndex = hangmanWord.indexOf(letter);
+        return letterIndex;
     }
+
+    /*
+        takes game model class and increments wins
+        input: index location of letter location of hangman word
+        output: replaces letter to the view or decrement number of guesses from model
+
+    */
+
 
     replaceUnderScore(keyIndex) {
         if (keyIndex != -1) {
@@ -51,3 +60,8 @@ class GameModiferService {
     }
 
 }
+
+let myGame = new GameModiferService()
+console.log(myGame.findLetterIndex('q', 'apple'))
+
+module.exports = GameModiferService;
