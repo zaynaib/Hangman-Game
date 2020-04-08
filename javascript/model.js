@@ -29,6 +29,8 @@ class GameModel {
 			'koopalings',
 		];
 
+		this._lettersAlreadyGuessed = [];
+
 		this._numGuessesRemain = 10;
 		this._numWins = 0;
 		this._numLoss = 0;
@@ -36,6 +38,10 @@ class GameModel {
 
 	get hangmanChoices() {
 		return this._hangmanChoices;
+	}
+
+	get lettersAlreadyGuessed() {
+		return this._lettersAlreadyGuessed;
 	}
 
 	get numGuessesRemain() {
@@ -51,7 +57,11 @@ class GameModel {
 	}
 
 	set hangmanChoices(word) {
-		this.hangmanChoices = this._hangmanChoices.push(word)
+		this.hangmanChoices = this._hangmanChoices.push(word);
+	}
+
+	set lettersAlreadyGuessed(letter) {
+		this._lettersAlreadyGuessed.push(letter);
 	}
 
 	set numGuessesRemain(numberOfGuesses) {
@@ -67,8 +77,8 @@ class GameModel {
 	}
 }
 
-const myModel = new GameModel()
+const myModel = new GameModel();
 
-console.log(myModel.hangmanChoices)
+console.log(myModel.hangmanChoices);
 
 module.exports = GameModel;

@@ -16,38 +16,34 @@
 */
 
 class View {
+	constructor() {
+		this.app = this.getElement('#root');
 
-    //helper methods to retrieve an element and create an element
+		// The title of the app
+		this.title = this.createElement('h1');
+		this.title.textContent = 'Hangman Mario';
+	}
 
-    // Create an element with an optional CSS class
-    createElement(tag, className) {
-        const element = document.createElement(tag);
-        if (className) element.classList.add(className);
+	//a
 
-        return element
-    }
+	//helper methods to retrieve an element and create an element
 
-    // Retrieve an element from the DOM
-    getElement(selector) {
-        const element = document.querySelector(selector)
+	// Create an element with an optional CSS class
+	createElement(tag, className) {
+		const element = document.createElement(tag);
+		if (className) element.classList.add(className);
 
-        return element
-    }
+		return element;
+	}
 
-    constructor() {
+	// Retrieve an element from the DOM
+	getElement(selector) {
+		const element = document.querySelector(selector);
 
-    }
-
-
-
-
-
-
-
+		return element;
+	}
 }
 
-const testView = new View()
-console.log(testView.placeGenerator('ho!'));
-
+const testView = new View();
 
 module.exports = View;

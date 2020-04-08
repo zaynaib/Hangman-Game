@@ -12,34 +12,34 @@ calculate the number of wins
 
 const Model = require('./model');
 const View = require('./view');
-const GameModiferService = require('./')
+const GameModiferService = require('./gameModiferService');
 
 class Controller {
-    constructor(model, view) {
-        this.model = model;
-        this.view = view;
-    }
+	constructor(model, view) {
+		this.model = model;
+		this.view = view;
+	}
 
-    //select word to play the game
+	//select word to play the game
 
-    selectHangmanWord(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-    }
+	selectHangmanWord(arr) {
+		return arr[Math.floor(Math.random() * arr.length)];
+	}
 
-    //hide the word with underscores
+	//hide the word with underscores
 
-    placeGenerator(word) {
-        let placeholders = [];
+	placeGenerator(word) {
+		let placeholders = [];
 
-        for (let letter of word) {
-            placeholders.push('_');
-        }
-        return placeholders;
-    }
+		for (let letter of word) {
+			placeholders.push('_');
+		}
+		return placeholders;
+	}
 
-    //game play steps
+	//game play steps
 
-    /*
+	/*
     https://www.w3schools.com/jsref/obj_keyboardevent.asp
 
     - player can guess a letter right
@@ -55,54 +55,55 @@ class Controller {
 
     */
 
-    //did the user guess right?
+	//did the user guess right?
 
-    //add event listners on keyup
+	//add event listners on keyup
 
-    //find index of letter
-    findLetterIndex(letter, hangmanWord) {
-        //https://www.w3schools.com/jsref/jsref_includes.asp
-        let isGuessRight = hangmanWord.indexOf(letter);
+	//find index of letter
+	findLetterIndex(letter, hangmanWord) {
+		//https://www.w3schools.com/jsref/jsref_includes.asp
+		let isGuessRight = hangmanWord.indexOf(letter);
 
-        return isGuessRight;
-    }
+		return isGuessRight;
+	}
 
-    replaceUnderScore(keyIndex) {
-        if (keyIndex != -1) {
-            //replace underscore with letter
-        } else {
-            //decrement number of guesses
-        }
-    }
+	replaceUnderScore(keyIndex) {
+		if (keyIndex != -1) {
+			//replace underscore with letter
+		} else {
+			//decrement number of guesses
+		}
+	}
 
-    handleUserInput = (userInput, game) => {
-        GameModiferService.handleUserInput(userInput, game)
-        return game
-    }
+	handleUserInput = (userInput, game) => {
+		GameModiferService.handleUserInput(userInput, game);
+		return game;
+	};
 
-    //replace underscore with event
+	//replace underscore with event
 
-    //
+	//
 
-    /*
+	/*
 
     did the player win
 
     */
 
-    /*
+	/*
      
     did the player loose
 
     */
 
-    /*
+	/*
      game reset
 
     */
 }
 
-const testView = new Controller();
-console.log(testView.placeGenerator('ho!'));
+// const testView = new Controller();
+// console.log(testView.placeGenerator('ho!'));
+// const app = new Controller(new Model(), new View())
 
 module.exports = Controller;
