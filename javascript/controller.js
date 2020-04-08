@@ -11,23 +11,28 @@ calculate the number of wins
 */
 
 const Model = require('./model');
-const View = require('./view')
+const View = require('./view');
+const GameModiferService = require('./')
+
 class Controller {
     constructor(model, view) {
-        this.model = model
-        this.view = view
+        this.model = model;
+        this.view = view;
     }
+
+    //select word to play the game
 
     selectHangmanWord(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    placeGenerator(word) {
+    //hide the word with underscores
 
+    placeGenerator(word) {
         let placeholders = [];
 
         for (let letter of word) {
-            placeholders.push("_")
+            placeholders.push('_');
         }
         return placeholders;
     }
@@ -35,13 +40,49 @@ class Controller {
     //game play steps
 
     /*
+    https://www.w3schools.com/jsref/obj_keyboardevent.asp
 
-    - play can guess a letter right
+    - player can guess a letter right
+     -- findMatches function
+     -- replace underscores function ---*** create it
+
     - can guess a letter wrong
-    - can play the same letter
+      -- decrement number of guesses
+      -- checks to see if its zero
 
+    - can play the same letter
+      --if
 
     */
+
+    //did the user guess right?
+
+    //add event listners on keyup
+
+    //find index of letter
+    findLetterIndex(letter, hangmanWord) {
+        //https://www.w3schools.com/jsref/jsref_includes.asp
+        let isGuessRight = hangmanWord.indexOf(letter);
+
+        return isGuessRight;
+    }
+
+    replaceUnderScore(keyIndex) {
+        if (keyIndex != -1) {
+            //replace underscore with letter
+        } else {
+            //decrement number of guesses
+        }
+    }
+
+    handleUserInput = (userInput, game) => {
+        GameModiferService.handleUserInput(userInput, game)
+        return game
+    }
+
+    //replace underscore with event
+
+    //
 
     /*
 
@@ -59,12 +100,9 @@ class Controller {
      game reset
 
     */
-
-
 }
 
-
-const testView = new Controller()
+const testView = new Controller();
 console.log(testView.placeGenerator('ho!'));
 
 module.exports = Controller;

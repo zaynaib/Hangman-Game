@@ -55,6 +55,7 @@ Click on the [Mario Hangman Link](https://zaynaib.github.io/Hangman-Game/) in or
 -   [ ] Win the characters add animation for Mario + to go into a castle
 -   [ ] Win the player losers - Browser Laugh
 -   [ ] Have Mario Game Theme music in background. - option to turn off
+-   [ ] Use local storage to keep track of wins and losses
 
 ## My To Do List:
 
