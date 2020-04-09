@@ -38,9 +38,14 @@ it('checks to see if GameModel.js chooses random word', () => {
 	expect(gameModel.guessWord).toBeTruthy();
 });
 
-it('checks to see if GameModel.js chooses random word', () => {
+it('checks to see if Game service creates an array of blank spaces', () => {
 	let str = gameService.placeHolderGenerator('apple');
-	expect(str).toBe('_ _ _ _ _');
+	expect(str).toStrictEqual(['_', '_', '_', '_', '_']);
+});
+
+it('checks to see if Game Service replaces blank spaces', () => {
+	let str = gameService.letterChecker('a', ['_', '_', '_', '_', '_'], 'apple');
+	expect(str).toStrictEqual(['a', '_', '_', '_', '_']);
 });
 
 // const myModel = new GameModel();

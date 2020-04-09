@@ -62,11 +62,24 @@ class GameModiferService {
 	}
 
 	placeHolderGenerator(str) {
-		let myArr = [];
+		//let myArr = gameModel.wordDisplay;
+
 		for (let i = 0; i < str.length; i++) {
-			myArr.push('_');
+			gameModel.wordDisplay.push('_');
 		}
-		return myArr;
+		console.log(gameModel.wordDisplay, 'word display');
+		return gameModel.wordDisplay;
+	}
+
+	letterChecker(keyPressed, wordDisplay, guessWord) {
+		for (var i = 0; i < wordDisplay.length; i++) {
+			if (guessWord[i] === keyPressed) {
+				wordDisplay[i] = keyPressed;
+				//   wordisplayHTML.textContent = "Current Word: " + hangmanPlacementholders.join(" ");
+				//   lettersAlreadyGuessedHTML.textContent = "Letters Already Guessed: " + lettersAlreadyGuessed.join(" ");
+			}
+		} //end of for loop
+		return wordDisplay;
 	}
 
 	/*
@@ -83,15 +96,6 @@ class GameModiferService {
 		} else {
 			console.log('replace the placeholders with the letters');
 		} //ele end
-	}
-
-	placeHolderGenerator2(str) {
-		let myArr = [];
-		for (let i = 0; i < str.length; i++) {
-			myArr.push('_');
-			wordisplayHTML.textContent = 'Current Word: ' + myArr.join(' ');
-		}
-		return myArr;
 	}
 }
 
