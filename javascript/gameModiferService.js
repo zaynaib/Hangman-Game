@@ -88,13 +88,15 @@ class GameModiferService {
 
     */
 	handleUserInput(userInput, game) {
-		const hangmanWord = game.guessWord;
 		this.decrementGuess(game);
+		const hangmanWord = game.guessWord;
 		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
+
 		if (letterIndex === -1) {
 			console.log('Try Again');
 		} else {
 			console.log('replace the placeholders with the letters');
+			letterChecker(userInput, game.wordDisplay, game.guessWord);
 		} //ele end
 	}
 }
