@@ -1,8 +1,11 @@
+const Model = require('./model');
+
 class GameModiferService {
+	constructor() {}
 	/*
         takes game model class and increments wins
         input: GameModel instance
-        output: GameMode instance with wins increment by 1 
+        output: GameModel instance with wins increment by 1 
     */
 	incrementWins(gameModel) {
 		gameModel.numWins(gameModel.numWins() + 1);
@@ -10,7 +13,7 @@ class GameModiferService {
 	}
 
 	incrementLoss(gameModel) {
-		gameModel.numLoss(gameModel.numLoss() + 1);
+		gameModel.numLoss = gameModel.numLoss + 1;
 		return gameModel;
 	}
 
@@ -30,11 +33,27 @@ class GameModiferService {
         output: A word for the user to guess
     */
 	hangmanGuessWord(gameModel) {
-		let wordChoicesList = gameModel.hangmanChoices();
-		return wordChoicesList[Math.floor(Math.random() * wordChoicesList.length)];
+		let wordChoicesList = gameModel.hangmanChoices;
+		gameModel.guessWord = wordChoicesList[Math.floor(Math.random() * wordChoicesList.length)];
+		return gameModel;
 	}
 
+	//get some input from the user
+	//decrement guesses + add to lettersAlreadyGuessed
+
 	//*****check if the letter is correct*****
+	//if its correct reveal the letter
+	//else display try again
+
+	//replace  blank space with the letter
+	//check if all the spaces are filled
+	//then win the game
+	//resttart
+
+	handleUserInput(userInput, game) {
+		let hangmanWord = this.hangmanGuessWord(game);
+		let userLetterGuess = this.findLetterIndex(userInput, hangmanWord);
+	}
 
 	/*
         Takes user's input and finds the index of letter in a hangman word
@@ -55,39 +74,9 @@ class GameModiferService {
 		}
 		return myArr;
 	}
-
-	/*
-        game4.js lines 57 - 67
-
-        input: index location of letter location of hangman word
-        output: replaces letter to the view or decrement number of guesses from model
-
-    */
-	replaceUnderScore(gameModel, keyIndex) {
-		if (keyIndex != -1) {
-			//replace underscore with letter
-
-			for (var i = 0; i < hangmanPlacementholders.length; i++) {
-				if (hangmanWord[i] === keyPressed) {
-					hangmanPlacementholders[i] = keyPressed;
-					wordisplayHTML.textContent = 'Current Word: ' + hangmanPlacementholders.join(' ');
-					lettersAlreadyGuessedHTML.textContent =
-						'Letters Already Guessed: ' + lettersAlreadyGuessed.join(' ');
-				} //end of nested if loop inside of for loop
-			} //end of for loop
-			numberGuessesHTML.textContent = 'Number of Guesses Remaining: ' + numGuessRemain;
-		} else {
-			//decrement number of guesses
-			this.decrementGuess(gameModel);
-		}
-	}
-
-	//replace  blank space with the letter
-	//check if all the spaces are filled
-	//then win the game
-	//resttart
-
-	handleUSerInput(userInput, game) {}
 }
 
+let gameModel = new Model();
+let gameService = new GameModiferService();
+gameService.incrementLoss(gameModel);
 module.exports = GameModiferService;

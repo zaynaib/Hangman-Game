@@ -100,6 +100,32 @@ class Controller {
      game reset
 
     */
+
+	/*
+        game4.js lines 57 - 67
+
+        input: index location of letter location of hangman word
+        output: replaces letter to the view or decrement number of guesses from model
+
+    */
+	replaceUnderScore(gameModel, keyIndex) {
+		if (keyIndex != -1) {
+			//replace underscore with letter
+
+			for (var i = 0; i < hangmanPlacementholders.length; i++) {
+				if (hangmanWord[i] === keyPressed) {
+					hangmanPlacementholders[i] = keyPressed;
+					wordisplayHTML.textContent = 'Current Word: ' + hangmanPlacementholders.join(' ');
+					lettersAlreadyGuessedHTML.textContent =
+						'Letters Already Guessed: ' + lettersAlreadyGuessed.join(' ');
+				} //end of nested if loop inside of for loop
+			} //end of for loop
+			numberGuessesHTML.textContent = 'Number of Guesses Remaining: ' + numGuessRemain;
+		} else {
+			//decrement number of guesses
+			this.decrementGuess(gameModel);
+		}
+	}
 }
 
 // const testView = new Controller();
