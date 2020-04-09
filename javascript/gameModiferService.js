@@ -99,19 +99,19 @@ class GameModiferService {
 		} //ele end
     }
     
-    checkWinOrLose(){
+    checkWinOrLoose(game){
+       
+        //joins the word that the user is guessing
+        let hangmanWordCompare = game.wordDisplay.join(""); 
 
-         //joins the word that the user is guessing
-         var hangmanCompare = hangmanPlacementholders.join("");
         
          //checks to see if the user's guess is exactly equal to the computer generated word
-         if(hangmanCompare === hangmanWord){
-           wins+=1; //increment win
-           document.getElementById('winElm').textContent='Wins:'+wins; //show win up to the DOM
-           hangmanCompare = "blank"; //reset the user's guess to a black slate so it won't meet the condition
-           startOver(); //start the game over
+         if(hangmanWordCompare === game.guessWord){
 
-    }
+            this.incrementWins(game); //increment win
+        }else{
+            this.incrementLoss(game); //increment win
+        }
 }
 
 let gameModel = new Model();
