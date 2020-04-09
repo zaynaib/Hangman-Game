@@ -51,22 +51,6 @@ class GameModiferService {
 	//resttart
 
 	/*
-        Every input from the user reduces the number of guesses
-        Checks to see if the letter is in the word
-
-    */
-	handleUserInput(userInput, game) {
-		const hangmanWord = game.guessWord;
-		this.decrementGuess;
-		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
-		if (letterIndex === -1) {
-			console.log('Try Again');
-		} else {
-			console.log('replace the placeholders with the letters');
-		}
-	}
-
-	/*
         Takes user's input and finds the index of letter in a hangman word
         input: user input from event keypress
         output: the index location of letter inside word
@@ -79,7 +63,31 @@ class GameModiferService {
 
 	placeHolderGenerator(str) {
 		let myArr = [];
-		for (var i = 0; i < str.length; i++) {
+		for (let i = 0; i < str.length; i++) {
+			myArr.push('_');
+		}
+		return myArr;
+	}
+
+	/*
+        Every input from the user reduces the number of guesses
+        Checks to see if the letter is in the word
+
+    */
+	handleUserInput(userInput, game) {
+		const hangmanWord = game.guessWord;
+		this.decrementGuess(game);
+		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
+		if (letterIndex === -1) {
+			console.log('Try Again');
+		} else {
+			console.log('replace the placeholders with the letters');
+		} //ele end
+	}
+
+	placeHolderGenerator2(str) {
+		let myArr = [];
+		for (let i = 0; i < str.length; i++) {
 			myArr.push('_');
 			wordisplayHTML.textContent = 'Current Word: ' + myArr.join(' ');
 		}

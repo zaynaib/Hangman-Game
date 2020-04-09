@@ -38,6 +38,11 @@ it('checks to see if GameModel.js chooses random word', () => {
 	expect(gameModel.guessWord).toBeTruthy();
 });
 
+it('checks to see if GameModel.js chooses random word', () => {
+	let str = gameService.placeHolderGenerator('apple');
+	expect(str).toBe('_ _ _ _ _');
+});
+
 // const myModel = new GameModel();
 // console.log(myModel.numLoss);
 

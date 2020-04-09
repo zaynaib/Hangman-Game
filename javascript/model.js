@@ -30,6 +30,7 @@ class GameModel {
 		];
 
 		this._guessWord = '';
+		this._wordDisplay = [];
 		this._lettersAlreadyGuessed = [];
 		this._numGuessesRemain = 10;
 		this._numWins = 0;
@@ -42,6 +43,10 @@ class GameModel {
 
 	get guessWord() {
 		return this._guessWord;
+	}
+
+	get wordDisplay() {
+		return this._wordDisplay;
 	}
 
 	get lettersAlreadyGuessed() {
@@ -66,6 +71,10 @@ class GameModel {
 
 	set guessWord(randomWord) {
 		return (this._guessWord = randomWord);
+	}
+
+	set wordDisplay(letter) {
+		return (this._wordDisplay = letter);
 	}
 
 	set lettersAlreadyGuessed(letter) {
