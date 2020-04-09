@@ -19,6 +19,8 @@ beforeEach(() => {
 
 //create a setup to test model classs
 
+describe('Tweet utilities module', () => {});
+
 it('checks to see if class is instantiated ', () => {
 	expect(gameModel.hangmanChoices).toBeTruthy();
 });
@@ -38,19 +40,19 @@ it('checks to see if GameModel.js chooses random word', () => {
 	expect(gameModel.guessWord).toBeTruthy();
 });
 
-it('checks to see if Game service creates an array of blank spaces', () => {
-	let str = gameService.placeHolderGenerator('apple');
-	expect(str).toStrictEqual(['_', '_', '_', '_', '_']);
+describe('Word Display utility functions', () => {
+	it('checks to see if Game service creates an array of blank spaces', () => {
+		let str = gameService.placeHolderGenerator('apple');
+		expect(str).toStrictEqual(['_', '_', '_', '_', '_']);
+	});
+
+	it('checks to see if Game Service replaces blank spaces', () => {
+		let str = gameService.letterChecker('a', ['_', '_', '_', '_', '_'], 'apple');
+		expect(str).toStrictEqual(['a', '_', '_', '_', '_']);
+	});
+
+	it('checks to see if Game Service replaces blank spaces on muliple occurs of the same letter', () => {
+		let str = gameService.letterChecker('p', ['_', '_', '_', '_', '_'], 'apple');
+		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
+	});
 });
-
-it('checks to see if Game Service replaces blank spaces', () => {
-	let str = gameService.letterChecker('a', ['_', '_', '_', '_', '_'], 'apple');
-	expect(str).toStrictEqual(['a', '_', '_', '_', '_']);
-});
-
-// const myModel = new GameModel();
-// console.log(myModel.numLoss);
-
-// myModel.numLoss = 1;
-// console.log(myModel.numLoss);
-//console.log(myModel.hangmanChoices);

@@ -67,7 +67,6 @@ class GameModiferService {
 		for (let i = 0; i < str.length; i++) {
 			gameModel.wordDisplay.push('_');
 		}
-		console.log(gameModel.wordDisplay, 'word display');
 		return gameModel.wordDisplay;
 	}
 
@@ -98,7 +97,21 @@ class GameModiferService {
 			console.log('replace the placeholders with the letters');
 			letterChecker(userInput, game.wordDisplay, game.guessWord);
 		} //ele end
-	}
+    }
+    
+    checkWinOrLose(){
+
+         //joins the word that the user is guessing
+         var hangmanCompare = hangmanPlacementholders.join("");
+        
+         //checks to see if the user's guess is exactly equal to the computer generated word
+         if(hangmanCompare === hangmanWord){
+           wins+=1; //increment win
+           document.getElementById('winElm').textContent='Wins:'+wins; //show win up to the DOM
+           hangmanCompare = "blank"; //reset the user's guess to a black slate so it won't meet the condition
+           startOver(); //start the game over
+
+    }
 }
 
 let gameModel = new Model();
