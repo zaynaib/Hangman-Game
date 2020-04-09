@@ -8,7 +8,7 @@ class GameModiferService {
         output: GameModel instance with wins increment by 1 
     */
 	incrementWins(gameModel) {
-		gameModel.numWins(gameModel.numWins() + 1);
+		gameModel.numWins = gameModel.numWins + 1;
 		return gameModel;
 	}
 
@@ -23,7 +23,7 @@ class GameModiferService {
         output: GameModel instance with number of guesses decrement by 1 
     */
 	decrementGuess(gameModel) {
-		gameModel.numGuessesRemain(gameModel.numGuessesRemain() - 1);
+		gameModel.numGuessesRemain = gameModel.numGuessesRemain() - 1;
 		return gameModel;
 	}
 
@@ -50,9 +50,20 @@ class GameModiferService {
 	//then win the game
 	//resttart
 
+	/*
+        Every input from the user reduces the number of guesses
+        Checks to see if the letter is in the word
+
+    */
 	handleUserInput(userInput, game) {
-		let hangmanWord = this.hangmanGuessWord(game);
-		let userLetterGuess = this.findLetterIndex(userInput, hangmanWord);
+		const hangmanWord = game.guessWord;
+		this.decrementGuess;
+		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
+		if (letterIndex === -1) {
+			console.log('Try Again');
+		} else {
+			console.log('replace the placeholders with the letters');
+		}
 	}
 
 	/*
