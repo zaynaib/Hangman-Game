@@ -5,7 +5,6 @@ const View = require('./view');
 const ViewService = require('./gameViewService');
 const $ = require('jquery');
 
-
 //setup
 
 let gameModel = new Model();
@@ -63,15 +62,15 @@ describe('Word Display utility functions', () => {
 	});
 });
 
-
 describe('Tweet utilities module', () => {
-
+	// Set up our document body
+	document.body.innerHTML = '<div>' + '  <span id="username" />' + '  <button id="button" />' + '</div>';
 
 	let t = gameView.createTitle();
-	console.log(t)
+	console.log(t);
 	gameView.appendElement(t);
-	expect($('body.title').text()).toEqual('Johnny Cash - Logged In');
+	// expect($('body.h1').text()).toBe('Johnny Cash - Logged In');
+	expect(gameView.getElement('h1').innerHTML).toEqual('Johnny Cash - Logged In');
 
-	// expect(document.body.title.text()).toEqual('Johnny Cash - Logged In');
-
+	// expect(document.body.h1).toEqual('Johnny Cash - Logged In');
 });
