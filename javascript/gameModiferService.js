@@ -97,24 +97,28 @@ class GameModiferService {
 			console.log('replace the placeholders with the letters');
 			letterChecker(userInput, game.wordDisplay, game.guessWord);
 		} //ele end
-    }
-    
-    checkWinOrLoose(game){
-       
-        //joins the word that the user is guessing
-        let hangmanWordCompare = game.wordDisplay.join(""); 
+	}
 
-        
-         //checks to see if the user's guess is exactly equal to the computer generated word
-         if(hangmanWordCompare === game.guessWord){
+	checkWinOrLoose(game) {
 
-            this.incrementWins(game); //increment win
-        }else{
-            this.incrementLoss(game); //increment win
-        }
+		//joins the word that the user is guessing
+		let hangmanWordCompare = game.wordDisplay.join("");
+
+
+		//checks to see if the user's guess is exactly equal to the computer generated word
+		if (hangmanWordCompare === game.guessWord) {
+
+			this.incrementWins(game); //increment win
+		} else {
+			this.incrementLoss(game); //increment win
+		}
+	}
+
+
 }
 
 let gameModel = new Model();
 let gameService = new GameModiferService();
 gameService.incrementLoss(gameModel);
+
 module.exports = GameModiferService;

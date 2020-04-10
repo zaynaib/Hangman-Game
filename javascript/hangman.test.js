@@ -3,6 +3,8 @@ const Model = require('./model');
 const Service = require('./gameModiferService');
 const View = require('./view');
 const ViewService = require('./gameViewService');
+const $ = require('jquery');
+
 
 //setup
 
@@ -59,9 +61,17 @@ describe('Word Display utility functions', () => {
 		let str = gameService.letterChecker('p', ['_', '_', '_', '_', '_'], 'apple');
 		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
 	});
+});
 
 
-	describe('View class functions', () => {
-		
+describe('Tweet utilities module', () => {
+
+
+	let t = gameView.createTitle();
+	console.log(t)
+	gameView.appendElement(t);
+	expect($('body.title').text()).toEqual('Johnny Cash - Logged In');
+
+	// expect(document.body.title.text()).toEqual('Johnny Cash - Logged In');
 
 });

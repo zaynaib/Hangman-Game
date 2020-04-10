@@ -18,5 +18,8 @@
 	"homepage": "https://github.com/zaynaib/Hangman-Game#readme",
 	"devDependencies": {
 		"jest": "^25.2.0"
+	},
+	"dependencies": {
+		"jquery": "^3.4.1"
 	}
 }
