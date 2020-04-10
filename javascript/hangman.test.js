@@ -70,7 +70,7 @@ describe('Tweet utilities module', () => {
 	console.log(t);
 	gameView.appendElement(t);
 	// expect($('body.h1').text()).toBe('Johnny Cash - Logged In');
-	expect(gameView.getElement('h1').innerHTML).toEqual('Johnny Cash - Logged In');
+	expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
 
 	// expect(document.body.h1).toEqual('Johnny Cash - Logged In');
 });
