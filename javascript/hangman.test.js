@@ -1,15 +1,19 @@
 //import Model from './model';
 const Model = require('./model');
 const Service = require('./gameModiferService');
+const View = require('./view');
+const ViewService = require('./gameViewService');
 
 //setup
 
 let gameModel = new Model();
 let gameService = new Service();
+let gameView = new View();
 
 beforeEach(() => {
 	gameModel;
 	gameService;
+	gameView;
 });
 
 // //teardown
@@ -55,4 +59,9 @@ describe('Word Display utility functions', () => {
 		let str = gameService.letterChecker('p', ['_', '_', '_', '_', '_'], 'apple');
 		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
 	});
+
+
+	describe('View class functions', () => {
+		
+
 });
