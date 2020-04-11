@@ -18,14 +18,11 @@
 class View {
     constructor() {
         this.app = this.getElement('#root');
+        this.numberGuessesHTML = null;
+        this.lettersAlreadyGuessedHTML = null;
+        this.wordDisplayHTML = null;
         this.el = null;
-
-        // The title of the app
-        // this.title = this.createElement('h1');
-        // this.title.textContent = 'Hangman Mario';
     }
-
-    //a
 
     //helper methods to retrieve an element and create an element
 
@@ -47,9 +44,12 @@ class View {
         return element;
     }
 
-    appendElement(el) {
-        document.body.appendChild(el);
+    //set innerText of element
+    setElement(element, val) {
+        element.textContent = val;
     }
+
+    //reset value
 
 
     createTitle() {
@@ -58,6 +58,11 @@ class View {
         // title.innerHTML = 'test satu dua tiga';
         // document.body.appendChild(title);
         return title
+    }
+
+
+    appendElement(el) {
+        document.body.appendChild(el);
     }
 
 

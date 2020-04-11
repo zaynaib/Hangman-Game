@@ -62,15 +62,23 @@ describe('Word Display utility functions', () => {
 	});
 });
 
-describe('Tweet utilities module', () => {
+describe('View utilities', () => {
 	// Set up our document body
 	document.body.innerHTML = '<div>' + '  <span id="username" />' + '  <button id="button" />' + '</div>';
+	let title = gameView.createTitle();
+	gameView.appendElement(title);
 
-	let t = gameView.createTitle();
-	console.log(t);
-	gameView.appendElement(t);
-	// expect($('body.h1').text()).toBe('Johnny Cash - Logged In');
-	expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
+	it('checks if the element is created', () => {
 
-	// expect(document.body.h1).toEqual('Johnny Cash - Logged In');
+		expect(title).toBeTruthy();
+
+	});
+
+	it('checks element is added to the DOM', () => {
+
+		expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
+
+
+	});
+
 });
