@@ -17,6 +17,28 @@ class Controller {
         this.view = view;
     }
 
+    //set game elements
+    setGameText(gameModel, gameView) {
+        gameView.setElement(gameView.title, 'HangMan Mario');
+        gameView.setElement(gameView.wordDisplayHTML, `Current Word: ${gameModel.wordDisplay}`);
+        gameView.setElement(gameView.numberGuessHTML, `Number of Guesses Remaining ${gameModel.numGuessesRemain}`);
+        gameView.setElement(gameView.lettersAlreadyGuessedHTML, `Letters Already Guessed ${gameModel.lettersAlreadyGuessed}`);
+        gameView.setElement(gameView.winElm, `Wins ${gameModel.numWins}`);
+
+    }
+
+
+    //takes a view and append html element to the app setup game view
+    setupGameBoard(gameView) {
+        gameView.appendView(gameView.app, gameView.title);
+        gameView.appendView(gameView.app, gameView.wordDisplay);
+        gameView.appendView(gameView.app, gameView.numberGuessHTML);
+        gameView.appendView(gameView.app, gameView.lettersAlreadyGuessedHTML);
+        gameView.appendView(gameView.app, gameView.winElm);
+
+    }
+
+
 
 }
 
