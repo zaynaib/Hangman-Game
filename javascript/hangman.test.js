@@ -64,21 +64,22 @@ describe('Word Display utility functions', () => {
 
 describe('View utilities', () => {
 	// Set up our document body
-	document.body.innerHTML = '<div>' + '  <span id="username" />' + '  <button id="button" />' + '</div>';
-	let title = gameView.createTitle();
-	gameView.appendElement(title);
+	document.body.innerHTML = '<div id="root">' + '  <span id="username" />' + '  <button id="button" />' + '</div>';
+	let title = gameView.createElement('h1');
+	title.innerHTML = 'Hangman Mario';
+	let root = gameView.getElement('#root');
+	gameView.appendElement(root, title);
 
 	it('checks if the element is created', () => {
-
 		expect(title).toBeTruthy();
-
 	});
 
 	it('checks element is added to the DOM', () => {
-
 		expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
-
-
 	});
 
+	it('allows the text of an element to be reset', () => {
+		gameView.setElement(title, 'honey dew is not bad');
+		expect(title.innerHTML).toEqual('honey dew is not bad');
+	});
 });

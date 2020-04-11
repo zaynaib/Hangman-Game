@@ -15,62 +15,50 @@
 
 */
 
+const $ = require('jquery');
+
 class View {
-    constructor() {
-        this.app = this.getElement('#root');
-        this.numberGuessesHTML = null;
-        this.lettersAlreadyGuessedHTML = null;
-        this.wordDisplayHTML = null;
-        this.el = null;
-    }
+	constructor() {
+		this.app = this.getElement('#root');
 
-    //helper methods to retrieve an element and create an element
+		this.title = this.createElement('h1');
 
-    // Create an element with an optional CSS class
-    createElement(tag, className) {
-        const element = document.createElement(tag);
+		this.winElm = this.createElement('p', 'numElm');
 
-        if (className) {
-            element.classList.add(className);
-        }
+		this.wordDisplayHTML = this.createElement('div', 'wordisplay');
 
-        return element;
-    }
+		this.numGuessRemainHTML = this.createElement('p', 'numGuessElm');
 
-    // Retrieve an element from the DOM
-    getElement(selector) {
-        const element = document.querySelector(selector);
+		this.lettersAlreadyGuessedHTML = this.createElement('p', 'guessLetterElm');
+	}
 
-        return element;
-    }
+	//helper methods to retrieve an element and create an element
 
-    //set innerText of element
-    setElement(element, val) {
-        element.textContent = val;
-    }
+	// Create an element with an optional CSS class
+	createElement(tag, className) {
+		const element = document.createElement(tag);
 
-    //reset value
+		if (className) {
+			element.classList.add(className);
+		}
 
+		return element;
+	}
 
-    createTitle() {
-        const title = this.createElement('h1');
-        title.textContent = 'Hangman Mario';
-        // title.innerHTML = 'test satu dua tiga';
-        // document.body.appendChild(title);
-        return title
-    }
+	// Retrieve an element from the DOM
+	getElement(selector) {
+		const element = document.querySelector(selector);
+		return element;
+	}
 
+	//set innerText of element
+	setElement(element, val) {
+		element.textContent = val;
+	}
 
-    appendElement(el) {
-        document.body.appendChild(el);
-    }
-
-
+	appendElement(parent, child) {
+		parent.appendChild(child);
+	}
 }
 
-const testView = new View();
-let t = testView.createTitle();
-console.log(t)
-testView.appendElement(t);
-console.log('hello')
 module.exports = View;
