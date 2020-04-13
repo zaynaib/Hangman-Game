@@ -38,28 +38,21 @@ class GameModiferService {
 		return gameModel;
 	}
 
-	//get some input from the user
-	//decrement guesses + add to lettersAlreadyGuessed
-
-	//*****check if the letter is correct*****
-	//if its correct reveal the letter
-	//else display try again
-
-	//replace  blank space with the letter
-	//check if all the spaces are filled
-	//then win the game
-	//resttart
-
 	/*
-        Takes user's input and finds the index of letter in a hangman word
+        Takes user's input checks to see if letter exsists in index hangman word
         input: user input from event keypress
-        output: the index location of letter inside word
+        output: the index location of letter inside word or -1 if letter is not in word
 
     */
 	findLetterIndex(letter, hangmanWord) {
 		let letterIndex = hangmanWord.indexOf(letter);
 		return letterIndex;
 	}
+
+	/*
+		Creates underscores to be hide the word from the user
+
+	*/
 
 	placeHolderGenerator(gameModel) {
 		for (let i = 0; i < gameModel.guessWord.length; i++) {
@@ -68,56 +61,53 @@ class GameModiferService {
 		return gameModel.wordDisplay;
 	}
 
-	//replaces underscores with letters
-	//takes a
-	// letterDisplay(keyPressed, wordDisplay, guessWord) {
-	// 	for (let i = 0; i < wordDisplay.length; i++) {
-	// 		if (guessWord[i] === keyPressed) {
-	// 			wordDisplay[i] = keyPressed;
-	// 		}
-	// 	} //end of for loop
-	// 	return wordDisplay;
-	// }
+	/*
+		When user guesses correct word the letter will be revealed in the view
+
+	*/
 
 	letterDisplay(keyPressed, gameModel) {
 		const wordDisplay = gameModel.wordDisplay;
 		const guessWord = gameModel.guessWord;
+
 		for (let i = 0; i < guessWord.length; i++) {
 			if (guessWord[i] === keyPressed) {
 				wordDisplay[i] = keyPressed;
 			}
-		} //end of for loop
+		}
 		return wordDisplay;
 	}
 
 	checkWinOrLoose(game) {
-		//joins the word that the user is guessing
 		let hangmanWordCompare = game.wordDisplay.join('');
 		console.log(hangmanWordCompare);
 		console.log(game.guessWord);
 
-		//checks to see if the user's guess is exactly equal to the computer generated word
 		if (hangmanWordCompare != game.guessWord && game.numGuessesRemain == 0) {
 			this.incrementLoss(game); //increment win
-			return 'no';
+			return 'You have lost the game :(';
 		} else if (hangmanWordCompare === game.guessWord) {
 			this.incrementWins(game); //increment win
-			return 'yes';
+			return 'You have won the game :)';
 		} else {
 			return 'You got more chances to win';
 		}
 	}
 
 	/*
-        Every input from the user reduces the number of guesses
-        Checks to see if the letter is in the word
-
+		Every input from the user reduces the number of guesses
+		Handles all the game logic for the user input
+		controller method
     */
+
 	handleUserInput(userInput, gameModel) {
 		this.decrementGuess(gameModel);
 
 		const hangmanWord = gameModel.guessWord;
-		const wordDisplay = gameModel.wordDisplay;
+		let wins = gameModel.numWins;
+		let loss = gameModel.numLoss;
+
+		//check for changes
 
 		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
 

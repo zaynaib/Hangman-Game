@@ -3,8 +3,6 @@ const Model = require('./model');
 const Service = require('./gameModiferService');
 const View = require('./view');
 const ViewService = require('./gameViewService');
-const $ = require('jquery');
-
 //setup
 
 let gameModel = new Model();
@@ -21,10 +19,6 @@ beforeEach(() => {
 // afterEach(() => {
 // 	clearCityDatabase();
 // });
-
-//create a setup to test model classs
-
-//describe('Tweet utilities module', () => {});
 
 it('checks to see if class is instantiated ', () => {
 	expect(gameModel.hangmanChoices).toBeTruthy();
@@ -50,11 +44,6 @@ describe('GameService utilities modules', () => {
 		gameService.hangmanGuessWord(gameModel);
 		expect(gameModel.guessWord).toBeTruthy();
 	});
-
-	// it('letterChecker', () => {
-	// 	gameService.letterChecker('a', ['a', 'p', 'p', 'l', 'e'], 'apple');
-	// 	expect(gameModel.guessWord).toBeTruthy();
-	// });
 });
 
 describe('Word Display utility functions', () => {
@@ -75,16 +64,34 @@ describe('Word Display utility functions', () => {
 		gameService.letterDisplay('p', gameModel);
 		expect(gameModel.wordDisplay).toStrictEqual(['a', 'p', 'p', '_', '_']);
 	});
+
+	it('checks to see if letterDisplay does not make any changes if user inputs wrong letter', () => {
+		gameService.letterDisplay('x', gameModel);
+		expect(gameModel.wordDisplay).toStrictEqual(['a', 'p', 'p', '_', '_']);
+	});
 });
 
 describe('win/loose', () => {
 	gameModel.guessWord = 'apple';
-	gameService.placeHolderGenerator(gameModel);
-	gameService.checkWinOrLoose(game);
+	gameService.checkWinOrLoose(gameModel);
 
-	it('checks to see if Game Service replaces blank spaces on muliple occurs of the same letter', () => {
-		gameService.letterDisplay('p', gameModel);
-		expect(gameModel.wordDisplay).toStrictEqual(['a', 'p', 'p', '_', '_']);
+	it('checks to see if player wins', () => {
+		gameModel.wordDisplay = ['a', 'p', 'p', 'l', 'e'];
+		let result = gameService.checkWinOrLoose(gameModel);
+		expect(result).toBe('You have won the game :)');
+	});
+
+	it('checks to see if player wins', () => {
+		gameModel.wordDisplay = ['a', 'p', 'p', 'l', '_'];
+		let result = gameService.checkWinOrLoose(gameModel);
+		expect(result).toBe('You got more chances to win');
+	});
+
+	it('checks to see if player wins', () => {
+		gameModel.wordDisplay = ['a', 'p', 'p', 'l', '_'];
+		gameModel.numGuessesRemain = 0;
+		let result = gameService.checkWinOrLoose(gameModel);
+		expect(result).toBe('You have lost the game :(');
 	});
 });
 describe('View utilities', () => {
