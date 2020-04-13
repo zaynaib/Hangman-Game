@@ -69,12 +69,16 @@ class GameModiferService {
 	letterDisplay(keyPressed, gameModel) {
 		const wordDisplay = gameModel.wordDisplay;
 		const guessWord = gameModel.guessWord;
+		let letterIndex = this.findLetterIndex(keyPressed, guessWord);
 
-		for (let i = 0; i < guessWord.length; i++) {
-			if (guessWord[i] === keyPressed) {
-				wordDisplay[i] = keyPressed;
+		if (letterIndex != -1) {
+			for (let i = 0; i < guessWord.length; i++) {
+				if (guessWord[i] === keyPressed) {
+					wordDisplay[i] = keyPressed;
+				}
 			}
 		}
+
 		return wordDisplay;
 	}
 
@@ -104,23 +108,9 @@ class GameModiferService {
 		this.decrementGuess(gameModel);
 
 		const hangmanWord = gameModel.guessWord;
-		let wins = gameModel.numWins;
-		let loss = gameModel.numLoss;
 
-		//check for changes
-
-		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
-
-		if (letterIndex === -1) {
-			console.log('Try Again');
-			//add to letters already guessed
-		} else {
-			console.log('replace the placeholders with the letters');
-			//add letters already guessed
-			//check to see if they won the game
-			this.letterDisplay(userInput, gameModel);
-			console.log(this.checkWinOrLoose(gameModel));
-		} //ele end
+		this.letterDisplay(userInput, gameModel);
+		this.checkWinOrLoose(gameModel);
 	}
 
 	startOver() {}
@@ -143,7 +133,7 @@ console.log(gameModel.wordDisplay, '@@@@@');
 console.log(gameService.handleUserInput('a', gameModel));
 console.log(gameService.handleUserInput('l', gameModel));
 
-console.log(gameService.handleUserInput('e', gameModel));
+console.log(gameService.handleUserInput('q', gameModel));
 
 // console.log(gameService.checkWinOrLoose(gameModel));
 // console.log(gameService.letterDisplay('a', gameModel));

@@ -11,37 +11,38 @@ calculate the number of wins
 */
 
 class Controller {
-    constructor(model, view) {
-        this.model = model;
-        this.view = view;
-    }
+	constructor(model, view) {
+		this.model = model;
+		this.view = view;
 
-    //set game elements
-    setGameText(gameModel, gameView) {
-        gameView.setElement(gameView.title, 'HangMan Mario');
-        gameView.setElement(gameView.wordDisplayHTML, `Current Word: ${gameModel.wordDisplay}`);
-        gameView.setElement(gameView.numberGuessHTML, `Number of Guesses Remaining ${gameModel.numGuessesRemain}`);
-        gameView.setElement(
-            gameView.lettersAlreadyGuessedHTML,
-            `Letters Already Guessed ${gameModel.lettersAlreadyGuessed}`
-        );
-        gameView.setElement(gameView.winElm, `Wins ${gameModel.numWins}`);
-    }
+		//initial guess word for the game
+		//hangmanGuessWord call from gameModifierServices.js
+	}
 
-    //takes a view and append html element to the app setup game view
-    setupGameBoard(gameView) {
-        gameView.appendView(gameView.app, gameView.title);
-        gameView.appendView(gameView.app, gameView.wordDisplay);
-        gameView.appendView(gameView.app, gameView.numberGuessHTML);
-        gameView.appendView(gameView.app, gameView.lettersAlreadyGuessedHTML);
-        gameView.appendView(gameView.app, gameView.winElm);
-    }
+	//set initial game stats for the game
+	setGameText(gameModel, gameView) {
+		gameView.setElement(gameView.title, 'HangMan Mario');
+		gameView.setElement(gameView.wordDisplayHTML, `Current Word: ${gameModel.wordDisplay.join(' ')}`);
+		gameView.setElement(gameView.numberGuessHTML, `Number of Guesses Remaining ${gameModel.numGuessesRemain}`);
+		gameView.setElement(
+			gameView.lettersAlreadyGuessedHTML,
+			`Letters Already Guessed ${gameModel.lettersAlreadyGuessed}`
+		);
+		gameView.setElement(gameView.winElm, `Wins ${gameModel.numWins}`);
+	}
 
-    gamePlay() {
+	//takes a view and append html element to the app setup game view
+	setupGameBoard(gameView) {
+		gameView.appendView(gameView.app, gameView.title);
+		gameView.appendView(gameView.app, gameView.wordDisplay);
+		gameView.appendView(gameView.app, gameView.numberGuessHTML);
+		gameView.appendView(gameView.app, gameView.lettersAlreadyGuessedHTML);
+		gameView.appendView(gameView.app, gameView.winElm);
+	}
 
-    }
+	gamePlay() {}
 
-    /*
+	/*
         1. Setup hangman game board game
             -dom elements
             -choose a word
@@ -51,6 +52,10 @@ class Controller {
             -checkWinOrLoose function
             -run handleInput
         2. create startOver in GameModifer
+
+        ! Handle Input test
+        ! Add event listenr to controller
+        !Figure out how to work with gameModiferService Layer
 
 
     */
