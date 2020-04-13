@@ -77,6 +77,16 @@ describe('Word Display utility functions', () => {
 	});
 });
 
+describe('win/loose', () => {
+	gameModel.guessWord = 'apple';
+	gameService.placeHolderGenerator(gameModel);
+	gameService.checkWinOrLoose(game);
+
+	it('checks to see if Game Service replaces blank spaces on muliple occurs of the same letter', () => {
+		gameService.letterDisplay('p', gameModel);
+		expect(gameModel.wordDisplay).toStrictEqual(['a', 'p', 'p', '_', '_']);
+	});
+});
 describe('View utilities', () => {
 	// Set up our document body
 	document.body.innerHTML = '<div id="root">' + '  <span id="username" />' + '  <button id="button" />' + '</div>';

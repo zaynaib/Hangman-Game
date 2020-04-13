@@ -90,6 +90,22 @@ class GameModiferService {
 		return wordDisplay;
 	}
 
+	checkWinOrLoose(game) {
+		//joins the word that the user is guessing
+		let hangmanWordCompare = game.wordDisplay.join('');
+		console.log(hangmanWordCompare);
+		console.log(game.guessWord);
+
+		//checks to see if the user's guess is exactly equal to the computer generated word
+		if (hangmanWordCompare != game.guessWord && game.numGuessesRemain == 0) {
+			this.incrementLoss(game); //increment win
+			return 'no';
+		} else if (hangmanWordCompare === game.guessWord) {
+			this.incrementWins(game); //increment win
+			return 'yes';
+		}
+	}
+
 	/*
         Every input from the user reduces the number of guesses
         Checks to see if the letter is in the word
@@ -97,6 +113,7 @@ class GameModiferService {
     */
 	handleUserInput(userInput, gameModel) {
 		this.decrementGuess(gameModel);
+
 		const hangmanWord = gameModel.guessWord;
 		const wordDisplay = gameModel.wordDisplay;
 
@@ -109,20 +126,9 @@ class GameModiferService {
 			console.log('replace the placeholders with the letters');
 			//add letters already guessed
 			//check to see if they won the game
-			letterChecker(userInput, game.wordDisplay, game.guessWord);
+			this.letterDisplay(userInput, gameModel);
+			this.checkWinOrLoose(gameModel);
 		} //ele end
-	}
-
-	checkWinOrLoose(game) {
-		//joins the word that the user is guessing
-		let hangmanWordCompare = game.wordDisplay.join('');
-
-		//checks to see if the user's guess is exactly equal to the computer generated word
-		if (hangmanWordCompare === game.guessWord) {
-			this.incrementWins(game); //increment win
-		} else {
-			this.incrementLoss(game); //increment win
-		}
 	}
 
 	startOver() {}
@@ -131,9 +137,9 @@ class GameModiferService {
 let gameModel = new Model();
 let gameService = new GameModiferService();
 gameService.incrementLoss(gameModel);
-// console.log(gameModel.numWins);
-// console.log(gameModel.hangmanChoices);
-// console.log(gameModel.wordDisplay);
+console.log(gameModel.numWins);
+console.log(gameModel.hangmanChoices);
+console.log(gameModel.wordDisplay);
 
 gameModel.guessWord = 'apple';
 console.log(gameService.placeHolderGenerator(gameModel));
@@ -141,4 +147,15 @@ console.log(gameModel.wordDisplay, 'orginal display');
 
 console.log(gameService.letterDisplay('p', gameModel));
 console.log(gameModel.wordDisplay, '@@@@@');
+
+console.log(gameService.checkWinOrLoose(gameModel));
+console.log(gameService.letterDisplay('a', gameModel));
+console.log(gameService.checkWinOrLoose(gameModel));
+
+console.log(gameService.letterDisplay('l', gameModel));
+console.log(gameService.checkWinOrLoose(gameModel));
+
+console.log(gameService.letterDisplay('e', gameModel));
+console.log(gameService.checkWinOrLoose(gameModel));
+
 module.exports = GameModiferService;
