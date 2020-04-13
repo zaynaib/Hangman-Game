@@ -58,20 +58,22 @@ describe('GameService utilities modules', () => {
 });
 
 describe('Word Display utility functions', () => {
-	gameModel.guessWord = 'apple';
-	gameService.placeHolderGenerator(gameModel);
+	// gameModel.guessWord = 'apple';
+	// gameService.placeHolderGenerator(gameModel);
 	it('checks to see if Game service creates an array of blank spaces', () => {
+		gameModel.guessWord = 'apple';
+		gameService.placeHolderGenerator(gameModel);
 		expect(gameModel.wordDisplay).toStrictEqual(['_', '_', '_', '_', '_']);
 	});
 
 	it('checks to see if Game Service replaces blank spaces', () => {
-		gameService.letterDisplay('a', gameModel.wordDisplay, gameModel.guessWord);
-		expect(gameModel.wordDisplay).toEqual(['a', '_', '_', '_', '_']);
+		gameService.letterDisplay('a', gameModel);
+		expect(gameModel.wordDisplay).toStrictEqual(['a', '_', '_', '_', '_']);
 	});
 
 	it('checks to see if Game Service replaces blank spaces on muliple occurs of the same letter', () => {
-		let str = gameService.letterDisplay('p', ['_', '_', '_', '_', '_'], 'apple');
-		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
+		gameService.letterDisplay('p', gameModel);
+		expect(gameModel.wordDisplay).toStrictEqual(['a', 'p', 'p', '_', '_']);
 	});
 });
 

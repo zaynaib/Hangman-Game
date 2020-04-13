@@ -70,8 +70,19 @@ class GameModiferService {
 
 	//replaces underscores with letters
 	//takes a
-	letterDisplay(keyPressed, wordDisplay, guessWord) {
-		for (let i = 0; i < wordDisplay.length; i++) {
+	// letterDisplay(keyPressed, wordDisplay, guessWord) {
+	// 	for (let i = 0; i < wordDisplay.length; i++) {
+	// 		if (guessWord[i] === keyPressed) {
+	// 			wordDisplay[i] = keyPressed;
+	// 		}
+	// 	} //end of for loop
+	// 	return wordDisplay;
+	// }
+
+	letterDisplay(keyPressed, gameModel) {
+		const wordDisplay = gameModel.wordDisplay;
+		const guessWord = gameModel.guessWord;
+		for (let i = 0; i < guessWord.length; i++) {
 			if (guessWord[i] === keyPressed) {
 				wordDisplay[i] = keyPressed;
 			}
@@ -120,14 +131,14 @@ class GameModiferService {
 let gameModel = new Model();
 let gameService = new GameModiferService();
 gameService.incrementLoss(gameModel);
-console.log(gameModel.numWins);
-console.log(gameModel.hangmanChoices);
-console.log(gameModel.wordDisplay);
+// console.log(gameModel.numWins);
+// console.log(gameModel.hangmanChoices);
+// console.log(gameModel.wordDisplay);
 
 gameModel.guessWord = 'apple';
 console.log(gameService.placeHolderGenerator(gameModel));
-console.log(gameModel.wordDisplay);
+console.log(gameModel.wordDisplay, 'orginal display');
 
-console.log(gameService.letterDisplay('a', gameModel.wordDisplay, gameModel.guessWord));
+console.log(gameService.letterDisplay('p', gameModel));
 console.log(gameModel.wordDisplay, '@@@@@');
 module.exports = GameModiferService;
