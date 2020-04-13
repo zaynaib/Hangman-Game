@@ -61,8 +61,8 @@ class GameModiferService {
 		return letterIndex;
 	}
 
-	placeHolderGenerator(str) {
-		for (let i = 0; i < str.length; i++) {
+	placeHolderGenerator(gameModel) {
+		for (let i = 0; i < gameModel.guessWord.length; i++) {
 			gameModel.wordDisplay.push('_');
 		}
 		return gameModel.wordDisplay;
@@ -79,23 +79,16 @@ class GameModiferService {
 		return wordDisplay;
 	}
 
-	letterDisplay(keyPressed, gameModel) {
-		for (let i = 0; i < gameModel.wordDisplay.length; i++) {
-			if (gameModel.guessWord[i] === keyPressed) {
-				gameModel.wordDisplay[i] = keyPressed;
-			}
-		} //end of for loop
-		return gameModel.wordDisplay;
-	}
-
 	/*
         Every input from the user reduces the number of guesses
         Checks to see if the letter is in the word
 
     */
-	handleUserInput(userInput, game) {
-		this.decrementGuess(game);
-		const hangmanWord = game.guessWord;
+	handleUserInput(userInput, gameModel) {
+		this.decrementGuess(gameModel);
+		const hangmanWord = gameModel.guessWord;
+		const wordDisplay = gameModel.wordDisplay;
+
 		let letterIndex = this.findLetterIndex(userInput, hangmanWord);
 
 		if (letterIndex === -1) {
@@ -127,5 +120,14 @@ class GameModiferService {
 let gameModel = new Model();
 let gameService = new GameModiferService();
 gameService.incrementLoss(gameModel);
+console.log(gameModel.numWins);
+console.log(gameModel.hangmanChoices);
+console.log(gameModel.wordDisplay);
 
+gameModel.guessWord = 'apple';
+console.log(gameService.placeHolderGenerator(gameModel));
+console.log(gameModel.wordDisplay);
+
+console.log(gameService.letterDisplay('a', gameModel.wordDisplay, gameModel.guessWord));
+console.log(gameModel.wordDisplay, '@@@@@');
 module.exports = GameModiferService;
