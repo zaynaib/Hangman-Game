@@ -23,7 +23,7 @@ class GameModiferService {
         output: GameModel instance with number of guesses decrement by 1 
     */
 	decrementGuess(gameModel) {
-		gameModel.numGuessesRemain = gameModel.numGuessesRemain() - 1;
+		gameModel.numGuessesRemain = gameModel.numGuessesRemain - 1;
 		return gameModel;
 	}
 
@@ -103,6 +103,8 @@ class GameModiferService {
 		} else if (hangmanWordCompare === game.guessWord) {
 			this.incrementWins(game); //increment win
 			return 'yes';
+		} else {
+			return 'You got more chances to win';
 		}
 	}
 
@@ -127,7 +129,7 @@ class GameModiferService {
 			//add letters already guessed
 			//check to see if they won the game
 			this.letterDisplay(userInput, gameModel);
-			this.checkWinOrLoose(gameModel);
+			console.log(this.checkWinOrLoose(gameModel));
 		} //ele end
 	}
 
@@ -148,14 +150,19 @@ console.log(gameModel.wordDisplay, 'orginal display');
 console.log(gameService.letterDisplay('p', gameModel));
 console.log(gameModel.wordDisplay, '@@@@@');
 
-console.log(gameService.checkWinOrLoose(gameModel));
-console.log(gameService.letterDisplay('a', gameModel));
-console.log(gameService.checkWinOrLoose(gameModel));
+console.log(gameService.handleUserInput('a', gameModel));
+console.log(gameService.handleUserInput('l', gameModel));
 
-console.log(gameService.letterDisplay('l', gameModel));
-console.log(gameService.checkWinOrLoose(gameModel));
+console.log(gameService.handleUserInput('e', gameModel));
 
-console.log(gameService.letterDisplay('e', gameModel));
-console.log(gameService.checkWinOrLoose(gameModel));
+// console.log(gameService.checkWinOrLoose(gameModel));
+// console.log(gameService.letterDisplay('a', gameModel));
+// console.log(gameService.checkWinOrLoose(gameModel));
+
+// console.log(gameService.letterDisplay('l', gameModel));
+// console.log(gameService.checkWinOrLoose(gameModel));
+
+// console.log(gameService.letterDisplay('e', gameModel));
+// console.log(gameService.checkWinOrLoose(gameModel));
 
 module.exports = GameModiferService;
