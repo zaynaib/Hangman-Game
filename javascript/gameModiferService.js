@@ -56,14 +56,12 @@ class GameModiferService {
         output: the index location of letter inside word
 
     */
-	findLetterIndex(letter, gameModel) {
-		let letterIndex = gameModel.guessWord.indexOf(letter);
+	findLetterIndex(letter, hangmanWord) {
+		let letterIndex = hangmanWord.indexOf(letter);
 		return letterIndex;
 	}
 
 	placeHolderGenerator(str) {
-		//let myArr = gameModel.wordDisplay;
-
 		for (let i = 0; i < str.length; i++) {
 			gameModel.wordDisplay.push('_');
 		}
@@ -71,7 +69,7 @@ class GameModiferService {
 	}
 
 	//replaces underscores with letters
-	//takes a game model
+	//takes a
 	letterDisplay(keyPressed, wordDisplay, guessWord) {
 		for (let i = 0; i < wordDisplay.length; i++) {
 			if (guessWord[i] === keyPressed) {
@@ -79,6 +77,15 @@ class GameModiferService {
 			}
 		} //end of for loop
 		return wordDisplay;
+	}
+
+	letterDisplay(keyPressed, gameModel) {
+		for (let i = 0; i < gameModel.wordDisplay.length; i++) {
+			if (gameModel.guessWord[i] === keyPressed) {
+				gameModel.wordDisplay[i] = keyPressed;
+			}
+		} //end of for loop
+		return gameModel.wordDisplay;
 	}
 
 	/*
@@ -103,25 +110,18 @@ class GameModiferService {
 	}
 
 	checkWinOrLoose(game) {
-
 		//joins the word that the user is guessing
-		let hangmanWordCompare = game.wordDisplay.join("");
-
+		let hangmanWordCompare = game.wordDisplay.join('');
 
 		//checks to see if the user's guess is exactly equal to the computer generated word
 		if (hangmanWordCompare === game.guessWord) {
-
 			this.incrementWins(game); //increment win
 		} else {
 			this.incrementLoss(game); //increment win
 		}
 	}
 
-	startOver() {
-
-	}
-
-
+	startOver() {}
 }
 
 let gameModel = new Model();

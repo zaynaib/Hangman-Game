@@ -31,18 +31,15 @@ it('checks to see if class is instantiated ', () => {
 });
 
 describe('GameService utilities modules', () => {
-
 	it('checks to see if letter is in the string', () => {
-		gameModel.guessWord = 'apple';
-		expect(gameService.findLetterIndex('q', gameModel)).toBe(-1);
-		expect(gameService.findLetterIndex('a', gameModel)).toBe(0);
+		expect(gameService.findLetterIndex('q', 'apple')).toBe(-1);
+		expect(gameService.findLetterIndex('a', 'apple')).toBe(0);
 	});
 
 	it('checks if the number of losses gets incremented in the model', () => {
 		gameService.incrementLoss(gameModel);
 		expect(gameModel.numLoss).toBe(1);
 	});
-
 
 	it('checks if the number of wins gets incremented in the model', () => {
 		gameService.incrementWins(gameModel);
@@ -54,14 +51,11 @@ describe('GameService utilities modules', () => {
 		expect(gameModel.guessWord).toBeTruthy();
 	});
 
-
 	// it('letterChecker', () => {
 	// 	gameService.letterChecker('a', ['a', 'p', 'p', 'l', 'e'], 'apple');
 	// 	expect(gameModel.guessWord).toBeTruthy();
 	// });
-
 });
-
 
 describe('Word Display utility functions', () => {
 	it('checks to see if Game service creates an array of blank spaces', () => {
@@ -69,18 +63,22 @@ describe('Word Display utility functions', () => {
 		expect(str).toStrictEqual(['_', '_', '_', '_', '_']);
 	});
 
+	it('PART 2 checks to see if Game Service replaces blank spaces', () => {
+		gameModel.guessWord = 'apple';
+		let str = gameService.letterDisplay('a');
+		expect(str).toStrictEqual(['a', '_', '_', '_', '_']);
+	});
+
 	it('checks to see if Game Service replaces blank spaces', () => {
-		let str = gameService.letterChecker('a', ['_', '_', '_', '_', '_'], 'apple');
+		let str = gameService.letterDisplay('a', ['_', '_', '_', '_', '_'], 'apple');
 		expect(str).toStrictEqual(['a', '_', '_', '_', '_']);
 	});
 
 	it('checks to see if Game Service replaces blank spaces on muliple occurs of the same letter', () => {
-		let str = gameService.letterChecker('p', ['_', '_', '_', '_', '_'], 'apple');
+		let str = gameService.letterDisplay('p', ['_', '_', '_', '_', '_'], 'apple');
 		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
 	});
 });
-
-
 
 describe('View utilities', () => {
 	// Set up our document body
