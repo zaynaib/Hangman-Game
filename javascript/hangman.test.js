@@ -24,26 +24,44 @@ beforeEach(() => {
 
 //create a setup to test model classs
 
-describe('Tweet utilities module', () => {});
+//describe('Tweet utilities module', () => {});
 
 it('checks to see if class is instantiated ', () => {
 	expect(gameModel.hangmanChoices).toBeTruthy();
 });
 
-it('checks to see if letter is in the string', () => {
-	expect(gameService.findLetterIndex('q', 'apple')).toBe(-1);
-	expect(gameService.findLetterIndex('a', 'apple')).toBe(0);
+describe('GameService utilities modules', () => {
+
+	it('checks to see if letter is in the string', () => {
+		gameModel.guessWord = 'apple';
+		expect(gameService.findLetterIndex('q', gameModel)).toBe(-1);
+		expect(gameService.findLetterIndex('a', gameModel)).toBe(0);
+	});
+
+	it('checks if the number of losses gets incremented in the model', () => {
+		gameService.incrementLoss(gameModel);
+		expect(gameModel.numLoss).toBe(1);
+	});
+
+
+	it('checks if the number of wins gets incremented in the model', () => {
+		gameService.incrementWins(gameModel);
+		expect(gameModel.numWins).toBe(1);
+	});
+
+	it('checks to see if GameModel.js chooses random word', () => {
+		gameService.hangmanGuessWord(gameModel);
+		expect(gameModel.guessWord).toBeTruthy();
+	});
+
+
+	// it('letterChecker', () => {
+	// 	gameService.letterChecker('a', ['a', 'p', 'p', 'l', 'e'], 'apple');
+	// 	expect(gameModel.guessWord).toBeTruthy();
+	// });
+
 });
 
-it('checks if the number of wins gets incremented in the model', () => {
-	gameService.incrementLoss(gameModel);
-	expect(gameModel.numLoss).toBe(1);
-});
-
-it('checks to see if GameModel.js chooses random word', () => {
-	gameService.hangmanGuessWord(gameModel);
-	expect(gameModel.guessWord).toBeTruthy();
-});
 
 describe('Word Display utility functions', () => {
 	it('checks to see if Game service creates an array of blank spaces', () => {
@@ -61,6 +79,8 @@ describe('Word Display utility functions', () => {
 		expect(str).toStrictEqual(['_', 'p', 'p', '_', '_']);
 	});
 });
+
+
 
 describe('View utilities', () => {
 	// Set up our document body

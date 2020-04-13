@@ -10,7 +10,6 @@ calculate the number of wins
 
 */
 
-
 class Controller {
     constructor(model, view) {
         this.model = model;
@@ -22,11 +21,12 @@ class Controller {
         gameView.setElement(gameView.title, 'HangMan Mario');
         gameView.setElement(gameView.wordDisplayHTML, `Current Word: ${gameModel.wordDisplay}`);
         gameView.setElement(gameView.numberGuessHTML, `Number of Guesses Remaining ${gameModel.numGuessesRemain}`);
-        gameView.setElement(gameView.lettersAlreadyGuessedHTML, `Letters Already Guessed ${gameModel.lettersAlreadyGuessed}`);
+        gameView.setElement(
+            gameView.lettersAlreadyGuessedHTML,
+            `Letters Already Guessed ${gameModel.lettersAlreadyGuessed}`
+        );
         gameView.setElement(gameView.winElm, `Wins ${gameModel.numWins}`);
-
     }
-
 
     //takes a view and append html element to the app setup game view
     setupGameBoard(gameView) {
@@ -35,13 +35,26 @@ class Controller {
         gameView.appendView(gameView.app, gameView.numberGuessHTML);
         gameView.appendView(gameView.app, gameView.lettersAlreadyGuessedHTML);
         gameView.appendView(gameView.app, gameView.winElm);
+    }
+
+    gamePlay() {
 
     }
 
+    /*
+        1. Setup hangman game board game
+            -dom elements
+            -choose a word
+            -run placeGenerator _ _ _ _
+            -test the letter checker function in gameModifer
+            -test handle userinput
+            -checkWinOrLoose function
+            -run handleInput
+        2. create startOver in GameModifer
 
 
+    */
 }
-
 
 const Model = require('./model');
 const View = require('./view');

@@ -56,8 +56,8 @@ class GameModiferService {
         output: the index location of letter inside word
 
     */
-	findLetterIndex(letter, hangmanWord) {
-		let letterIndex = hangmanWord.indexOf(letter);
+	findLetterIndex(letter, gameModel) {
+		let letterIndex = gameModel.guessWord.indexOf(letter);
 		return letterIndex;
 	}
 
@@ -70,12 +70,12 @@ class GameModiferService {
 		return gameModel.wordDisplay;
 	}
 
-	letterChecker(keyPressed, wordDisplay, guessWord) {
-		for (var i = 0; i < wordDisplay.length; i++) {
+	//replaces underscores with letters
+	//takes a game model
+	letterDisplay(keyPressed, wordDisplay, guessWord) {
+		for (let i = 0; i < wordDisplay.length; i++) {
 			if (guessWord[i] === keyPressed) {
 				wordDisplay[i] = keyPressed;
-				//   wordisplayHTML.textContent = "Current Word: " + hangmanPlacementholders.join(" ");
-				//   lettersAlreadyGuessedHTML.textContent = "Letters Already Guessed: " + lettersAlreadyGuessed.join(" ");
 			}
 		} //end of for loop
 		return wordDisplay;
@@ -93,8 +93,11 @@ class GameModiferService {
 
 		if (letterIndex === -1) {
 			console.log('Try Again');
+			//add to letters already guessed
 		} else {
 			console.log('replace the placeholders with the letters');
+			//add letters already guessed
+			//check to see if they won the game
 			letterChecker(userInput, game.wordDisplay, game.guessWord);
 		} //ele end
 	}
@@ -112,6 +115,10 @@ class GameModiferService {
 		} else {
 			this.incrementLoss(game); //increment win
 		}
+	}
+
+	startOver() {
+
 	}
 
 
