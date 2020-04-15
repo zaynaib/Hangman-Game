@@ -1,10 +1,9 @@
-//import Model from './model';
 const Model = require('./model');
 const Service = require('./gameModiferService');
 const View = require('./view');
 const ViewService = require('./gameViewService');
-//setup
 
+//setup
 let gameModel = new Model();
 let gameService = new Service();
 let gameView = new View();
@@ -113,5 +112,36 @@ describe('View utilities', () => {
 	it('allows the text of an element to be reset', () => {
 		gameView.setElement(title, 'honey dew is not bad');
 		expect(title.innerHTML).toEqual('honey dew is not bad');
+	});
+
+
+	describe('Handle Input', () => {
+		it('checks to see if it will return the right text', () => {
+			gameModel.guessWord = 'apple';
+
+			let result = gameService.handleUserInput('a', gameModel);
+
+			expect(result).toBe('You got more chances to win');
+		});
+
+		it('checks to see if it will return the right text with wrong input', () => {
+			gameModel.guessWord = 'apple';
+
+			let result = gameService.handleUserInput('x', gameModel);
+
+			expect(result).toBe('You got more chances to win');
+		});
+
+
+		it('checks to see if it will return the right text with wrong input and no more guesses', () => {
+			gameModel.guessWord = 'apple';
+			gameModel.numGuessesRemain = 0;
+
+			let result = gameService.handleUserInput('x', gameModel);
+
+			expect(result).toBe('You have lost the game :(');
+		});
+
+
 	});
 });

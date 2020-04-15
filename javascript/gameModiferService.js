@@ -108,9 +108,18 @@ class GameModiferService {
 		this.decrementGuess(gameModel);
 
 		const hangmanWord = gameModel.guessWord;
+		console.log("working")
 
 		this.letterDisplay(userInput, gameModel);
-		this.checkWinOrLoose(gameModel);
+		return this.checkWinOrLoose(gameModel);
+	}
+
+
+	gameLogic(gameModel) {
+		document.addEventListener('keydown', function (event) {
+			let keyPressed = event.key;
+			this.handleInput(keyPressed, gameModel);
+		});
 	}
 
 	startOver() {}
