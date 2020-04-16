@@ -84,8 +84,8 @@ class GameModiferService {
 
 	checkWinOrLoose(game) {
 		let hangmanWordCompare = game.wordDisplay.join('');
-		console.log(hangmanWordCompare);
-		console.log(game.guessWord);
+		// console.log(hangmanWordCompare);
+		// console.log(game.guessWord);
 
 		if (hangmanWordCompare != game.guessWord && game.numGuessesRemain == 0) {
 			this.incrementLoss(game); //increment win
@@ -108,12 +108,10 @@ class GameModiferService {
 		this.decrementGuess(gameModel);
 
 		const hangmanWord = gameModel.guessWord;
-		console.log("working")
 
 		this.letterDisplay(userInput, gameModel);
 		return this.checkWinOrLoose(gameModel);
 	}
-
 
 	gameLogic(gameModel) {
 		document.addEventListener('keydown', function (event) {
@@ -125,6 +123,7 @@ class GameModiferService {
 	startOver() {}
 }
 
+/*
 let gameModel = new Model();
 let gameService = new GameModiferService();
 gameService.incrementLoss(gameModel);
@@ -143,6 +142,7 @@ console.log(gameService.handleUserInput('a', gameModel));
 console.log(gameService.handleUserInput('l', gameModel));
 
 console.log(gameService.handleUserInput('q', gameModel));
+*/
 
 // console.log(gameService.checkWinOrLoose(gameModel));
 // console.log(gameService.letterDisplay('a', gameModel));

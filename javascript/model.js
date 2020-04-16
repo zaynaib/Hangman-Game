@@ -13,7 +13,7 @@
 
 */
 
-class GameModel {
+class Model {
 	constructor() {
 		//List of hangman guesses for the game
 		this._hangmanChoices = [
@@ -102,4 +102,4 @@ class GameModel {
 // console.log(myModel.numLoss);
 // //console.log(myModel.hangmanChoices);
 
-module.exports = GameModel;
+module.exports = Model;

@@ -43,7 +43,7 @@ class View {
 
 	// Retrieve an element from the DOM
 	getElement(selector) {
-		const element = document.querySelector(selector);
+		let element = document.querySelector(selector);
 
 		return element;
 	}
@@ -58,11 +58,11 @@ class View {
 	}
 }
 
-let gameView = new View();
-console.log(gameView.app);
-let title = gameView.createElement('h1');
-title.innerHTML = 'Hangman Mario';
-let root = gameView.getElement('#root');
-gameView.appendElement(root, title);
+// let gameView = new View();
+// console.log(gameView.getElement('#root'));
+// let title = gameView.createElement('h1');
+// title.innerHTML = 'Hangman Mario';
+// let root = gameView.getElement('#root');
+// gameView.appendElement(root, title);
 
-exports = View;
+module.exports = View;

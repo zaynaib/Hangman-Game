@@ -2,16 +2,19 @@ const Model = require('./model');
 const Service = require('./gameModiferService');
 const View = require('./view');
 const ViewService = require('./gameViewService');
+const Controller = require('./controller');
 
 //setup
 let gameModel = new Model();
 let gameService = new Service();
 let gameView = new View();
+let gameController = new Controller(gameModel, gameView, gameService);
 
 beforeEach(() => {
 	gameModel;
 	gameService;
 	gameView;
+	gameService;
 });
 
 // //teardown
@@ -74,19 +77,19 @@ describe('win/loose', () => {
 	gameModel.guessWord = 'apple';
 	gameService.checkWinOrLoose(gameModel);
 
-	it('checks to see if player wins', () => {
+	it('checks to see if player wins when user guesses all letters correct', () => {
 		gameModel.wordDisplay = ['a', 'p', 'p', 'l', 'e'];
 		let result = gameService.checkWinOrLoose(gameModel);
 		expect(result).toBe('You have won the game :)');
 	});
 
-	it('checks to see if player wins', () => {
+	it('gives user feedback to try again', () => {
 		gameModel.wordDisplay = ['a', 'p', 'p', 'l', '_'];
 		let result = gameService.checkWinOrLoose(gameModel);
 		expect(result).toBe('You got more chances to win');
 	});
 
-	it('checks to see if player wins', () => {
+	it('tells user that they lost the game if they run out of guesses', () => {
 		gameModel.wordDisplay = ['a', 'p', 'p', 'l', '_'];
 		gameModel.numGuessesRemain = 0;
 		let result = gameService.checkWinOrLoose(gameModel);
@@ -114,34 +117,30 @@ describe('View utilities', () => {
 		expect(title.innerHTML).toEqual('honey dew is not bad');
 	});
 
-
-	describe('Handle Input', () => {
+	describe('Handle Input function tests', () => {
 		it('checks to see if it will return the right text', () => {
 			gameModel.guessWord = 'apple';
 
 			let result = gameService.handleUserInput('a', gameModel);
-
 			expect(result).toBe('You got more chances to win');
 		});
 
 		it('checks to see if it will return the right text with wrong input', () => {
 			gameModel.guessWord = 'apple';
+			gameModel.numGuessesRemain = 2;
 
 			let result = gameService.handleUserInput('x', gameModel);
 
 			expect(result).toBe('You got more chances to win');
 		});
 
-
 		it('checks to see if it will return the right text with wrong input and no more guesses', () => {
 			gameModel.guessWord = 'apple';
-			gameModel.numGuessesRemain = 0;
+			gameModel.numGuessesRemain = 1;
 
-			let result = gameService.handleUserInput('x', gameModel);
+			let result = gameService.handleUserInput('z', gameModel);
 
 			expect(result).toBe('You have lost the game :(');
 		});
-
-
 	});
 });
