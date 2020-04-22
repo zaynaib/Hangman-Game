@@ -58,12 +58,12 @@ class View {
 	}
 }
 
-let gameView = new View();
-console.log(gameView.getElement('#root'));
-let title = gameView.createElement('h1');
-gameView.setElement(title, `hangman ${5}`);
-// title.innerHTML = 'Hangman Mario';
-let root = gameView.getElement('#root');
-gameView.appendElement(root, title);
+// let gameView = new View();
+// console.log(gameView.getElement('#root'));
+// let title = gameView.createElement('h1');
+// gameView.setElement(title, `hangman ${5}`);
+// // title.innerHTML = 'Hangman Mario';
+// let root = gameView.getElement('#root');
+// gameView.appendElement(root, title);
 
 module.exports = View;

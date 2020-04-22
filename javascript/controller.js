@@ -10,10 +10,8 @@ class Controller {
 		this.view = view;
 		this.service = service;
 
-		//initial guess word for the game
-		//hangmanGuessWord call from gameModifierServices.js
 
-		this.view.bindgetElement(this.getElement);
+
 	}
 
 	//set initial game stats for the
@@ -22,21 +20,21 @@ class Controller {
 		//gameServices placeHodlerGenerator
 	}
 
-	setGameText() {
-		console.log(this.view.app);
-		let root = this.view.getElement('#root');
+	// setGameText() {
+	// 	console.log(this.view.app);
+	// 	let root = this.view.getElement('#root');
 
-		// this.view.setElement(this.view.title, 'HangMan Mario');
-		// this.view.appendElement(root, this.view.title);
-		// this.view.setElement(this.view.wordDisplayHTML, `Current Word: ${this.view.wordDisplay.join(' ')}`);
-		// this.view.setElement(this.view.numberGuessHTML, `Number of Guesses Remaining ${this.view.numGuessesRemain}`);
-		// this.view.setElement(
-		//     this.view.lettersAlreadyGuessedHTML,
-		//     `Letters Already Guessed ${this.view.lettersAlreadyGuessed}`
-		// );
-		// this.view.setElement(this.view.winElm, `Wins ${this.view.numWins}`);
-		// this.view.getElement('');
-	}
+	// 	// this.view.setElement(this.view.title, 'HangMan Mario');
+	// 	// this.view.appendElement(root, this.view.title);
+	// 	// this.view.setElement(this.view.wordDisplayHTML, `Current Word: ${this.view.wordDisplay.join(' ')}`);
+	// 	// this.view.setElement(this.view.numberGuessHTML, `Number of Guesses Remaining ${this.view.numGuessesRemain}`);
+	// 	// this.view.setElement(
+	// 	//     this.view.lettersAlreadyGuessedHTML,
+	// 	//     `Letters Already Guessed ${this.view.lettersAlreadyGuessed}`
+	// 	// );
+	// 	// this.view.setElement(this.view.winElm, `Wins ${this.view.numWins}`);
+	// 	// this.view.getElement('');
+	// }
 
 	// //takes a view and append html element to the app setup game view
 	// setupGameBoard(gameView) {
@@ -72,19 +70,19 @@ class Controller {
 
     */
 }
-console.log('hello');
+// console.log('hello');
 
-const Model = require('./model.js');
-const View = require('./view');
-const Service = require('./gameModiferService');
+// const Model = require('./model.js');
+// const View = require('./view');
+// const Service = require('./gameModiferService');
 
-const testView = new Controller(Model, View, Service);
-testView.setGameText();
-console.log(Model.guessWord);
-// console.log(testView.app);
-// testView.setGameText(Model, View);
-// testView.setupGameBoard(View);
-// console.log(testView.setupGameBoard('ho!'));
-// const app = new Controller(new Model(), new View());
+// const testView = new Controller(Model, View, Service);
+// testView.setGameText();
+// console.log(Model.guessWord);
+// // console.log(testView.app);
+// // testView.setGameText(Model, View);
+// // testView.setupGameBoard(View);
+// // console.log(testView.setupGameBoard('ho!'));
+// // const app = new Controller(new Model(), new View());
 
 module.exports = Controller;
