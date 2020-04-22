@@ -143,4 +143,11 @@ describe('View utilities', () => {
 			expect(result).toBe('You have lost the game :(');
 		});
 	});
+
+	describe('Controller test', () => {
+		document.body.innerHTML =
+			'<div id="root">' + '  <span id="username" />' + '  <button id="button" />' + '</div>';
+
+		it('', () => {});
+	});
 });
