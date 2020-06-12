@@ -17,10 +17,15 @@
 	},
 	"homepage": "https://github.com/zaynaib/Hangman-Game#readme",
 	"devDependencies": {
-		"jest": "^25.2.0"
+		"browserify": "^16.5.1",
+		"html-webpack-plugin": "^4.3.0",
+		"jest": "^25.2.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11",
+		"webpack-dev-server": "^3.11.0"
 	},
 	"dependencies": {
-		"jquery": "^3.4.1",
+		"jquery": "^3.5.1",
 		"uniq": "^1.0.1"
 	}
 }
