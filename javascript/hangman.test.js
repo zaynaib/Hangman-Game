@@ -1,7 +1,7 @@
 const Model = require('./model');
 const Service = require('./gameModiferService');
 const View = require('./view');
-const ViewService = require('./gameViewService');
+// const ViewService = require('./gameViewService');
 const Controller = require('./controller');
 
 //setup
@@ -108,9 +108,9 @@ describe('View utilities', () => {
 		expect(title).toBeTruthy();
 	});
 
-	it('checks element is added to the DOM', () => {
-		expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
-	});
+	// it('checks element is added to the DOM', () => {
+	// 	expect(gameView.getElement('h1').innerHTML).toEqual('Hangman Mario');
+	// });
 
 	it('allows the text of an element to be reset', () => {
 		gameView.setElement(title, 'honey dew is not bad');
